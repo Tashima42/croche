@@ -5,6 +5,27 @@ main()
 function main() {
   const recipe = loadRecipe()
   buildForm(recipe)
+  registerKeyboardEvents()
+}
+
+
+function registerKeyboardEvents() {
+  document.addEventListener(
+    "keypress",
+    (event) => {
+      if (event.key == " ") {
+        setNextCompleted()
+      }
+      if (event.key == "b") {
+        undoCompleted()
+      }
+    },
+    false
+  )
+}
+
+function showHelpMessage() {
+  alert("Press 'SPACE' to mark as completed\nPress 'b' to undo the last completed")
 }
 
 function updateForm() {
