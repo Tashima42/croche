@@ -1,0 +1,71 @@
+body {
+  background-color: #ffa8a9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 5vh;
+  font-family: "Quicksand", sans-serif;
+}
+
+.main-workspace {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.196);
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.recipe-info h3 {
+  line-height: 0em;
+  padding-bottom: 0.5em;
+}
+
+.recipe-info h3 {
+  color: #a14a76;
+  padding: 0.2em;
+  border-radius: 5px;
+}
+
+.steps {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  justify-content: center;
+}
+
+.step {
+  margin-top: 10px;
+  border: #a14a76 2px dashed;
+  border-radius: 10px;
+  width: 100%;
+  padding: 5px;
+}
+
+.step h3 {
+  margin: 0;
+  color: rgb(107 114 128);
+  font-weight: 700;
+}
+
+.sub-steps {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sub-steps-completed {
+  margin: 0px;
+  color: #a14a76;
+  font-weight: 700;
+}
+
+mark {
+  background-color: #ffa8a9;
+  border-radius: 5px;
+}
