@@ -96,4 +96,5 @@ mark {
   border: none;
   box-shadow: 2px 2px 3px #0000004a;
   margin: 10px;
+  touch-action: manipulation;
 }
