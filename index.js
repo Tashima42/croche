@@ -71,7 +71,7 @@ function buildSubStep(outerId, { id, description, completed }) {
 
 function buildSubStepSeparator() {
   const span = document.createElement("span")
-  span.textContent = " | "
+  span.textContent = " - "
   return span
 }
 
