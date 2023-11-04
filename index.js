@@ -1,12 +1,101 @@
 'use strict';
 
-buildForm()
+main()
 
-function buildForm() {
+function main() {
+  const recipe = loadRecipe()
+  buildForm(recipe)
+}
+
+function updateForm() {
+  const recipe = getRecipe()
+  buildForm(recipe)
+}
+
+function setNextCompleted() {
+  const recipe = loadRecipe()
+  stepsLoop:
+  for (let i = 0; i < recipe.steps.length; i++) {
+    const step = recipe.steps[i]
+    if (!step.completed) {
+      for (let j = 0; j < step.subSteps.length; j++) {
+        const subStep = step.subSteps[j]
+        if (!subStep.completed) {
+          recipe.steps[i].subSteps[j].completed = true
+          if (j == step.subSteps.length - 1) {
+            recipe.steps[i].completed = true
+          }
+          setRecipe(recipe)
+          break stepsLoop;
+        }
+      }
+    }
+  }
+  updateForm()
+}
+
+function undoCompleted() {
+  const recipe = loadRecipe()
+  stepsLoop:
+  for (let i = 0; i < recipe.steps.length; i++) {
+    const step = recipe.steps[i]
+    let lastSubStepUncomplete = false
+    let lastStepCompleted = -1
+    if (!step.completed) {
+      for (let j = step.subSteps.length - 1; j >= 0; j--) {
+        const subStep = step.subSteps[j]
+        if (subStep.completed) {
+          recipe.steps[i].subSteps[j].completed = false
+          if (j == 0) {
+            recipe.steps[i].completed = false
+          }
+          setRecipe(recipe)
+          console.log("outer break")
+          break stepsLoop;
+        } else if (j == 0 && !subStep.completed) {
+          lastSubStepUncomplete = true
+          lastStepCompleted = i - 1
+          console.log("sub break")
+          break
+        }
+      }
+    }
+    if (lastSubStepUncomplete) {
+      let len = recipe.steps[lastStepCompleted].subSteps.length
+      recipe.steps[lastStepCompleted].subSteps[len - 1].completed = false
+      recipe.steps[lastStepCompleted].completed = false
+      setRecipe(recipe)
+      break
+    }
+  }
+  updateForm()
+}
+
+function setRecipe(recipe) {
+  localStorage.setItem("recipe", JSON.stringify(recipe))
+}
+
+function getRecipe() {
+  return JSON.parse(localStorage.getItem("recipe"))
+}
+
+function loadRecipe() {
+  let stored = localStorage.getItem("recipe")
+  if (!stored) {
+    stored = JSON.stringify(recipe)
+    localStorage.setItem("recipe", stored)
+  }
+  stored = JSON.parse(stored)
+
+  console.log(stored)
+  return stored
+}
+
+function buildForm(recipe) {
   setRecipeName()
 
-  const main = document.getElementById("main")
-  main.appendChild(buildSteps(recipe.steps))
+  const main = document.getElementById("outer-steps")
+  main.replaceChildren(buildSteps(recipe.steps))
 }
 
 function setRecipeName() {

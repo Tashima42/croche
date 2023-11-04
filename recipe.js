@@ -3,6 +3,7 @@ const recipe = {
   steps: [
     {
       id: 1,
+      completed: false,
       subSteps: [
         { id: 1, description: "anel mágico", completed: false },
         { id: 2, description: "pb", completed: false },
@@ -11,10 +12,11 @@ const recipe = {
         { id: 5, description: "pb", completed: false },
         { id: 6, description: "pb", completed: false },
         { id: 7, description: "pb", completed: false },
-      ]
+      ],
     },
     {
       id: 2,
+      completed: false,
       subSteps: [
         { id: 1, description: "aum", completed: false },
         { id: 2, description: "aum", completed: false },
@@ -26,6 +28,7 @@ const recipe = {
     },
     {
       id: 3,
+      completed: false,
       subSteps: [
         { id: 1, description: "pb", completed: false },
         { id: 2, description: "aum", completed: false },
@@ -43,6 +46,7 @@ const recipe = {
     },
     {
       id: 4,
+      completed: false,
       subSteps: [
         { id: 1, description: "pb", completed: false },
         { id: 2, description: "pb", completed: false },
@@ -66,6 +70,7 @@ const recipe = {
     },
     {
       id: 5,
+      completed: false,
       subSteps: [
         { id: 1, description: "pb", completed: false },
         { id: 2, description: "pb", completed: false },
