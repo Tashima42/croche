@@ -14,6 +14,7 @@ function registerKeyboardEvents() {
     "keypress",
     (event) => {
       if (event.key == " ") {
+        event.preventDefault()
         setNextCompleted()
       }
       if (event.key == "b") {
